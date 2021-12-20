@@ -5,10 +5,7 @@
 struct
 {
     char Querry[250];
-    char A[250];
-    char B[250];
-    char C[250];
-    char D[250];
+    char Choice[4][250];
     char Hint[250];
     int answer;
 } typedef Question;
