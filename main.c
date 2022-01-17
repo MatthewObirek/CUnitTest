@@ -46,6 +46,7 @@ int main(int argc, char* argv[])
     else
     {
         printf("no file was added, enter a file here that contains the proper formatting for the quiz\n(NOTE): formatting is listed in the README:");
+        return EXIT_FAILURE;
     }
     //printf("\n");
     
