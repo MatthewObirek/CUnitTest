@@ -9,6 +9,8 @@ void createQuestion(Question* Q, char* Querry, char* Type, char* ExtraInfo, char
     strcpy(Q->Hint, Hint);
     return;
 }
+//hello
+
 
 void printQuestion(Question *Q)
 {
