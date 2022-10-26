@@ -1,0 +1,12 @@
+!Question: Example of a Question?
+!QType: MC
+!ExtraInfo: This could be A!This could be B!This Could Be C!This Could be D
+!Answer: B
+!Hint: 2
+!EndQuestion
+!Question: Example of a True/False question? [T or F]
+!QType: TF
+!ExtraInfo: NULL
+!Answer: T
+!Hint: No hint Available.
+!EndQuestion
