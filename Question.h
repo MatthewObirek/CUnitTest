@@ -4,13 +4,14 @@
 
 struct
 {
-    char Querry[250];
-    char Choice[4][250];
-    char Hint[250];
-    int answer;
+    char Querry[256];
+    char Type[256];
+    char ExtraInfo[256];
+    char Answer[256];
+    char Hint[256];
 } typedef Question;
 
-void createQuestion(Question* Q, char* Querry, char* a, char* b, char* c, char* d, char* Hint, int answer);
+void createQuestion(Question* Q, char* Querry, char* Type, char* ExtraInfo, char* Answer, char* Hint);
 
 void printQuestion(Question* Q);
 

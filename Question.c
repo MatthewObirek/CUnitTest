@@ -1,24 +1,40 @@
 #include "Question.h"
 
-void createQuestion(Question* Q, char* Querry, char* a, char* b, char* c, char* d, char* Hint, int answer)
+void createQuestion(Question* Q, char* Querry, char* Type, char* ExtraInfo, char* Answer, char* Hint)
 {
     strcpy(Q->Querry, Querry);
-    strcpy(Q->Choice[0], a);
-    strcpy(Q->Choice[1], b);
-    strcpy(Q->Choice[2], c);
-    strcpy(Q->Choice[3], d);
+    strcpy(Q->Type, Type);
+    strcpy(Q->ExtraInfo, ExtraInfo);
+    strcpy(Q->Answer, Answer);
     strcpy(Q->Hint, Hint);
-    Q->answer = answer;
     return;
 }
 
 void printQuestion(Question *Q)
 {
     printf("%s", Q->Querry);
-    printf("\t%s", Q->Choice[0]);
-    printf("\t%s", Q->Choice[1]);
-    printf("\t%s", Q->Choice[2]);
-    printf("\t%s", Q->Choice[3]);
+    printf("%s", Q->Type);
+    if (strcmp(Q->Type, "MC") == 0)
+    {
+        char delim[2] = "!";
+        char* ptr = strtok(Q->ExtraInfo, delim);
+        char Choice[4][128];
+        int n = 0;
+        while(ptr != NULL)
+        {
+            strcpy(Choice[n], ptr);
+            n++;
+            ptr = strtok(NULL, delim);
+        }
+        printf("\t%s", Choice[0]);
+        printf("\t%s", Choice[1]);
+        printf("\t%s", Choice[2]);
+        printf("\t%s", Choice[3]);
+    }
+    else if (strcmp(Q->Type, "TF") == 0)
+    {
+        printf("\tTrue, or False\n");
+    }
 }
 
 int answerQuestion(Question* Q)
@@ -29,14 +45,14 @@ int answerQuestion(Question* Q)
     do {
         printf("Answer(A=1/B=2/C=3/D=4): ");
         scanf("%d", &input);
-        if (input == Q->answer) 
+        if (input == Q->Answer) 
         {
 
             return correctness;//return correct
         }
         else if (correctness>0)
         {
-            printf("Incorrect, The correct answer is \n\n%s\nTry again\n", Q->Choice[(Q->answer-1)]);
+           // printf("Incorrect, The correct answer is \n\n%s\nTry again\n", Q->Choice[(Q->answer-1)]);
 
         }
         else 
@@ -44,6 +60,6 @@ int answerQuestion(Question* Q)
             printf("%s", Q->Hint);
         }
         correctness++;
-    } while ( input != Q->answer);
+    } while ( input != Q->Answer);
     return correctness;
 }
